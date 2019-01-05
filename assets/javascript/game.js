@@ -26,14 +26,20 @@ $(document).ready(function(){
         enemies.push(bb);
         enemies.push(cc);
         enemies.push(dd);
-        $('#choose').html("<img src='assets/images/ph.jpg' alt='ph'>");
-        enemies.forEach(function(enemy) {
-            $('#enemies').prepend($('<div>').html("<img src='assets/images/" + enemy.name + ".jpg' alt='" + enemy.name + "'>"));
-        });
+        $('#choose').html("<img src='assets/images/" + player.name + ".jpg' alt='" + player.name + "'>");
+        
+        
+        
+        
+        
     });
 
-    
-
+    //display enemies in section 2
+    function showEnemies(){
+        enemies.forEach(function(enemy) {
+            $('#enemies').prepend($("<div>").html("<img src='assets/images/" + enemy.name + ".jpg' alt='" + enemy.name + "'>"));
+        });
+    }
 
 
 

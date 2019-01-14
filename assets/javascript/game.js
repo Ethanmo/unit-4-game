@@ -41,21 +41,22 @@ $(document).ready(function(){
         $("'#" + area + "'").append("<img class='characterToChoose' id='dragonite' src='assets/images/Dragonite.png' alt='Dragonite'>");
         if (player !== null){
             if (area === 'choose'){
-                $('#choose').html("<img src='assets/images/" + (player.charAt(0).toUpperCase() + player.slice(1)) + ".png' alt='Caterpie'>");
+                $('#choose').html("<img src='assets/images/" + (player.name.charAt(0).toUpperCase() + player.name.slice(1)) + ".png' alt='Caterpie'>");
             } else if (area === 'enemies'){
                 $("#enemies").remove("'#" + player + "'");
-            } else if (area === fighting){
-                $("#fighting").html("<img src='assets/images/" + (currentEnemy.charAt(0).toUpperCase() + currentEnemy.slice(1)) + ".png' alt='Caterpie'>");
+            } else if (area === 'fighting'){
+                $("#fighting").html("<img src='assets/images/" + (currentEnemy.name.charAt(0).toUpperCase() + currentEnemy.name.slice(1)) + ".png' alt='Caterpie'>");
             }
         } 
     }
 
     function attack (target){
-        target.healthPoints -= currentDmg;
+        target.hp -= currentDmg;
         $("#msg").html("You attacked " +
             target.name + "for " + currentDmg + " hp.");
         currentDmg += player.dmg;
     };
+
 
     //undisplay anything other than the chosen picture
    /*  $('body').on("click", '#fighter1', function(){
@@ -70,7 +71,16 @@ $(document).ready(function(){
     }); */
 
     $(document).on("click", ".characterToChoose", function(event){
-        player = event.target.id;
+        if (event.target.id === 'caterpie') {
+            player = caterpie;
+        } else if (event.target.id === 'rattata'){
+            player = rattata;
+        } else if (event.target.id === 'gengar'){
+            player = gengar;
+        } else if (event.target.id === 'dragonite'){
+            player = dragonite;
+        }
+        displaySection(choose);
     })
 
 

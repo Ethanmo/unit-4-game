@@ -30,6 +30,7 @@ $(document).ready(function(){
     var player;
     var currentDmg;
     var enemies = [];
+    var currentEnemy;
     
     //$('#choose').html($('#fighter1').attr('alt'));
 
@@ -38,11 +39,15 @@ $(document).ready(function(){
         $("'#" + area + "'").append("<img class='characterToChoose' id='rattata' src='assets/images/Rattata.png' alt='Rattata'>");
         $("'#" + area + "'").append("<img class='characterToChoose' id='gengar' src='assets/images/Gengar.png' alt='Gengar'>");
         $("'#" + area + "'").append("<img class='characterToChoose' id='dragonite' src='assets/images/Dragonite.png' alt='Dragonite'>");
-        if (area === 'choose'){
-            $('#choose').html("<img src='assets/images/" + (player.charAt(0).toUpperCase() + player.slice(1)) + ".png' alt='Caterpie'>");
-        } else if (area === 'enemies'){
-            
-        }
+        if (player !== null){
+            if (area === 'choose'){
+                $('#choose').html("<img src='assets/images/" + (player.charAt(0).toUpperCase() + player.slice(1)) + ".png' alt='Caterpie'>");
+            } else if (area === 'enemies'){
+                $("#enemies").remove("'#" + player + "'");
+            } else if (area === fighting){
+                $("#fighting").html("<img src='assets/images/" + (currentEnemy.charAt(0).toUpperCase() + currentEnemy.slice(1)) + ".png' alt='Caterpie'>");
+            }
+        } 
     }
 
     function attack (target){
